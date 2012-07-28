@@ -275,7 +275,6 @@ ro.com.google.clientidbase.ms=android-motorola
 ro.com.google.clientidbase.am=android-motorola
 ro.com.google.clientidbase.gmm=android-motorola
 ro.com.google.clientidbase.yt=android-motorola
-persist.sys.usb.config=mtp
 persist.ril.features=0x182
 ro.config.notification_sound=OnTheHunt.ogg
 ro.config.alarm_alert=Alarm_Classic.ogg
