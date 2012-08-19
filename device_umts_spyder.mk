@@ -27,11 +27,10 @@ PRODUCT_COPY_FILES += \
     device/motorola/umts_spyder/audio/libasound.so:/system/lib/libasound.so \
     device/motorola/umts_spyder/audio/libaudio_ext.so:/system/lib/libaudio_ext.so
 
+# Hardware HALs
 PRODUCT_PACKAGES += \
     camera.omap4 \
     libinvensense_mpl \
-    hwcomposer.omap4 \
-    hwcomposer.default \
 
 PRODUCT_PACKAGES += \
     libaudioutils \
@@ -48,7 +47,6 @@ PRODUCT_PACKAGES += \
     libaudiomodemgeneric \
     rild \
     radiooptions \
-    sh 
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -62,6 +60,9 @@ PRODUCT_PACKAGES += \
     regulatory.bin \
     calibrator
 
+# Wifi Direct
+PRODUCT_PACKAGES += \
+    ti_wfd_libs
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -76,11 +77,11 @@ PRODUCT_PACKAGES += \
     umts_spyder_releaseutils-tune2fs
 
 PRODUCT_PACKAGES += \
+    evtest \
     camera_test \
     Superuser \
     su \
     DockAudio \
-
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -94,30 +95,27 @@ PRODUCT_PACKAGES += wifi_tether_v3_2-pre1
 PRODUCT_COPY_FILES += \
     device/motorola/umts_spyder/prebuilt/lib/libwtnativetask.so:system/lib/libwtnativetask.so \
 
+
 # Rootfs files
 PRODUCT_COPY_FILES += \
-    out/target/product/umts_spyder/root/init:system/etc/rootfs/init \
-    out/target/product/umts_spyder/root/sbin/adbd:system/etc/rootfs/sbin/adbd \
-    device/motorola/umts_spyder/root/default.prop:system/etc/rootfs/default.prop \
-    device/motorola/umts_spyder/root/init.rc:system/etc/rootfs/init.rc \
-    device/motorola/umts_spyder/root/init.mapphone_cdma.rc:system/etc/rootfs/init.mapphone_cdma.rc \
-    device/motorola/umts_spyder/root/init.mapphone_umts.rc:system/etc/rootfs/init.mapphone_umts.rc \
-    device/motorola/umts_spyder/root/usbcheck.sh:system/etc/rootfs/usbcheck.sh \
-    device/motorola/umts_spyder/root/ueventd.rc:system/etc/rootfs/ueventd.rc \
-    device/motorola/umts_spyder/root/ueventd.mapphone_cdma.rc:system/etc/rootfs/ueventd.mapphone_cdma.rc \
-    device/motorola/umts_spyder/root/ueventd.mapphone_umts.rc:system/etc/rootfs/ueventd.mapphone_umts.rc \
+    device/motorola/spyder/root/default.prop:/root/default.prop \
+    device/motorola/spyder/root/init.rc:/root/init.rc \
+    device/motorola/spyder/root/init.mapphone_cdma.rc:/root/init.mapphone_cdma.rc \
+    device/motorola/spyder/root/init.mapphone_umts.rc:/root/init.mapphone_umts.rc \
+    device/motorola/spyder/root/ueventd.rc:/root/ueventd.rc \
+    device/motorola/spyder/root/ueventd.mapphone_cdma.rc:/root/ueventd.mapphone_cdma.rc \
+    device/motorola/spyder/root/ueventd.mapphone_umts.rc:/root/ueventd.mapphone_umts.rc \
 
-# Hijack files
+# Kexec files
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_spyder/root/default.prop:root/default.prop \
-    device/motorola/umts_spyder/root/init.rc:root/init.rc \
-    device/motorola/umts_spyder/root-hijack/init.mapphone_cdma.rc:root/init.mapphone_cdma.rc \
-    device/motorola/umts_spyder/root-hijack/init.mapphone_umts.rc:root/init.mapphone_umts.rc \
-    device/motorola/umts_spyder/root/usbcheck.sh:root/usbcheck.sh \
-    device/motorola/umts_spyder/root/ueventd.rc:root/ueventd.rc \
-    device/motorola/umts_spyder/root/ueventd.mapphone_cdma.rc:root/ueventd.mapphone_cdma.rc \
-    device/motorola/umts_spyder/root/ueventd.mapphone_umts.rc:root/ueventd.mapphone_umts.rc \
-
+    device/motorola/spyder/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
+    device/motorola/spyder/kexec/atags:system/etc/kexec/atags \
+    device/motorola/spyder/kexec/devtree:system/etc/kexec/devtree \
+    device/motorola/spyder/kexec/kexec:system/etc/kexec/kexec \
+    device/motorola/spyder/kexec/kexec.ko:system/etc/kexec/kexec.ko \
+    device/motorola/spyder/kexec/uart.ko:system/etc/kexec/uart.ko \
+    out/target/product/spyder/ramdisk.img:system/etc/kexec/ramdisk.img \
+    out/target/product/spyder/kernel:system/etc/kexec/kernel \
 
 # Permissions files
 PRODUCT_COPY_FILES += \
@@ -142,8 +140,6 @@ PRODUCT_COPY_FILES += \
 # Prebuilts
 PRODUCT_COPY_FILES += \
     device/motorola/umts_spyder/prebuilt/bin/battd:system/bin/battd \
-    device/motorola/umts_spyder/prebuilt/bin/hijack:system/bin/hijack \
-    device/motorola/umts_spyder/prebuilt/bin/hijack.log_dump:system/bin/hijack.log_dump \
     device/motorola/umts_spyder/prebuilt/bin/mount_ext3.sh:system/bin/mount_ext3.sh \
     device/motorola/umts_spyder/prebuilt/bin/strace:system/bin/strace \
     device/motorola/umts_spyder/prebuilt/etc/gps.conf:system/etc/gps.conf \
@@ -166,16 +162,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/umts_spyder/prebuilt/usr/keylayout/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
     device/motorola/umts_spyder/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
 
-# omapzoom wifi firmware
-PRODUCT_COPY_FILES += \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin:/system/etc/firmware/ti-connectivity/wl127x-fw-4-mr.bin.bin \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin:/system/etc/firmware/ti-connectivity/wl127x-fw-4-plt.bin \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin:/system/etc/firmware/ti-connectivity/wl127x-fw-4-sr.bin \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl128x-fw-4-mr.bin:/system/etc/firmware/ti-connectivity/wl128x-fw-4-mr.bin \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl128x-fw-4-plt.bin:/system/etc/firmware/ti-connectivity/wl128x-fw-4-plt.bin \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl128x-fw-4-sr.bin:/system/etc/firmware/ti-connectivity/wl128x-fw-4-sr.bin \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl1271-nvs.bin:/system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
-    device/motorola/umts_spyder/prebuilt/etc/firmware/ti-connectivity/wl1271-nvs_127x.bin:/system/etc/firmware/ti-connectivity/wl1271-nvs_127x.bin \
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -183,31 +169,17 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # still need to set english for audio init
 PRODUCT_LOCALES += en_US
 
-
-# copy all kernel modules under the "modules" directory to system/lib/modules
-PRODUCT_COPY_FILES += $(shell \
-    find device/motorola/umts_spyder/modules -name '*.ko' \
-    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-    | tr '\n' ' ')
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/motorola/umts_spyder/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 # stuff specific to ti OMAP4 hardware
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
+$(call inherit-product, device/ti/proprietary-open/wl12xx/wlan/wl12xx-wlan-fw-products.mk)
+$(call inherit-product-if-exists, vendor/motorola/common/proprietary/imgtec/sgx-imgtec-bins.mk)
 
 $(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor.mk)
 
-
-# stuff common to all Motorola phones -- disabled for Sandbox
-#$(call inherit-product, device/motorola/common/common_hijack.mk)
 
 $(call inherit-product, build/target/product/full_base_telephony.mk)
 
