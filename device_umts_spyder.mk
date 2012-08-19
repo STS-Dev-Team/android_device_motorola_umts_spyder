@@ -146,6 +146,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/umts_spyder/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/motorola/umts_spyder/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/motorola/umts_spyder/prebuilt/etc/TICameraCameraProperties.xml:system/etc/TICameraCameraProperties.xml \
+    device/motorola/spyder/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
     device/motorola/umts_spyder/prebuilt/usr/idc/evfwd.idc:system/usr/idc/evfwd.idc \
     device/motorola/umts_spyder/prebuilt/usr/idc/Motorola_Mobility_Motorola_HD_Dock.idc:system/usr/idc/Motorola_Mobility_Motorola_HD_Dock.idc \
     device/motorola/umts_spyder/prebuilt/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
