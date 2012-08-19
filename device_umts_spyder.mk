@@ -98,24 +98,24 @@ PRODUCT_COPY_FILES += \
 
 # Rootfs files
 PRODUCT_COPY_FILES += \
-    device/motorola/spyder/root/default.prop:/root/default.prop \
-    device/motorola/spyder/root/init.rc:/root/init.rc \
-    device/motorola/spyder/root/init.mapphone_cdma.rc:/root/init.mapphone_cdma.rc \
-    device/motorola/spyder/root/init.mapphone_umts.rc:/root/init.mapphone_umts.rc \
-    device/motorola/spyder/root/ueventd.rc:/root/ueventd.rc \
-    device/motorola/spyder/root/ueventd.mapphone_cdma.rc:/root/ueventd.mapphone_cdma.rc \
-    device/motorola/spyder/root/ueventd.mapphone_umts.rc:/root/ueventd.mapphone_umts.rc \
+    device/motorola/umts_spyder/root/default.prop:/root/default.prop \
+    device/motorola/umts_spyder/root/init.rc:/root/init.rc \
+    device/motorola/umts_spyder/root/init.mapphone_cdma.rc:/root/init.mapphone_cdma.rc \
+    device/motorola/umts_spyder/root/init.mapphone_umts.rc:/root/init.mapphone_umts.rc \
+    device/motorola/umts_spyder/root/ueventd.rc:/root/ueventd.rc \
+    device/motorola/umts_spyder/root/ueventd.mapphone_cdma.rc:/root/ueventd.mapphone_cdma.rc \
+    device/motorola/umts_spyder/root/ueventd.mapphone_umts.rc:/root/ueventd.mapphone_umts.rc \
 
 # Kexec files
 PRODUCT_COPY_FILES += \
-    device/motorola/spyder/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
-    device/motorola/spyder/kexec/atags:system/etc/kexec/atags \
-    device/motorola/spyder/kexec/devtree:system/etc/kexec/devtree \
-    device/motorola/spyder/kexec/kexec:system/etc/kexec/kexec \
-    device/motorola/spyder/kexec/kexec.ko:system/etc/kexec/kexec.ko \
-    device/motorola/spyder/kexec/uart.ko:system/etc/kexec/uart.ko \
-    out/target/product/spyder/ramdisk.img:system/etc/kexec/ramdisk.img \
-    out/target/product/spyder/kernel:system/etc/kexec/kernel \
+    device/motorola/umts_spyder/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
+    device/motorola/umts_spyder/kexec/atags:system/etc/kexec/atags \
+    device/motorola/umts_spyder/kexec/devtree:system/etc/kexec/devtree \
+    device/motorola/umts_spyder/kexec/kexec:system/etc/kexec/kexec \
+    device/motorola/umts_spyder/kexec/kexec.ko:system/etc/kexec/kexec.ko \
+    device/motorola/umts_spyder/kexec/uart.ko:system/etc/kexec/uart.ko \
+    out/target/product/umts_spyder/ramdisk.img:system/etc/kexec/ramdisk.img \
+    out/target/product/umts_spyder/kernel:system/etc/kexec/kernel \
 
 # Permissions files
 PRODUCT_COPY_FILES += \
