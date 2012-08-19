@@ -145,7 +145,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/umts_spyder/prebuilt/etc/gps.conf:system/etc/gps.conf \
     device/motorola/umts_spyder/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/motorola/umts_spyder/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/motorola/umts_spyder/prebuilt/etc/hijack-boot.zip:system/etc/hijack-boot.zip \
     device/motorola/umts_spyder/prebuilt/etc/TICameraCameraProperties.xml:system/etc/TICameraCameraProperties.xml \
     device/motorola/umts_spyder/prebuilt/usr/idc/evfwd.idc:system/usr/idc/evfwd.idc \
     device/motorola/umts_spyder/prebuilt/usr/idc/Motorola_Mobility_Motorola_HD_Dock.idc:system/usr/idc/Motorola_Mobility_Motorola_HD_Dock.idc \
