@@ -30,7 +30,6 @@ BOARD_PAGE_SIZE := 0x4096
 # Kernel Build
 TARGET_KERNEL_SOURCE := kernel/motorola/solana
 TARGET_KERNEL_CONFIG := hashcode_1024_defconfig
-TARGET_PREBUILT_KERNEL := device/motorola/spyder/kernel
 
 KERNEL_EXTERNAL_MODULES:
 	make clean -C hardware/ti/wlan/mac80211/compat_wl12xx
