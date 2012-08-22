@@ -91,7 +91,7 @@ PRODUCT_PACKAGES += \
     Apollo \
 
 # WirelessTether
-PRODUCT_PACKAGES += wifi_tether_v3_2-pre1
+PRODUCT_PACKAGES += wifi_tether_v3_2-beta1
 PRODUCT_COPY_FILES += \
     device/motorola/umts_spyder/prebuilt/lib/libwtnativetask.so:system/lib/libwtnativetask.so \
 
