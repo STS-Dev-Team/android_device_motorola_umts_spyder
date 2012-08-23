@@ -1,5 +1,5 @@
 # Inherit device configuration for VZW Droid RAZR.
-$(call inherit-product, device/motorola/umts_spyder/device_umts_spyder.mk)
+$(call inherit-product, device/motorola/umts_spyder/full_umts_spyder.mk)
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)

@@ -2,13 +2,15 @@
 # This is the product configuration for a full umts_spyder
 #
 
+DEVICE_FOLDER := device/motorola/umts_spyder
+
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 
 # Device overlay
-    DEVICE_PACKAGE_OVERLAYS += device/motorola/umts_spyder/overlay
+    DEVICE_PACKAGE_OVERLAYS += $(DEVICE_FOLDER)/overlay
 
 # high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -18,14 +20,14 @@ PRODUCT_PACKAGES := \
     charger \
     charger_res_images
 
-# Audio - use stock ICS leak files for now
+# Audio
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_spyder/audio/alsa.omap4.so:/system/lib/hw/alsa.omap4.so \
-    device/motorola/umts_spyder/audio/audio.a2dp.default.so:/system/lib/hw/audio.a2dp.default.so \
-    device/motorola/umts_spyder/audio/audio.primary.omap4.so:/system/lib/hw/audio.primary.omap4.so \
-    device/motorola/umts_spyder/audio/audio_policy.omap4.so:/system/lib/hw/audio_policy.omap4.so \
-    device/motorola/umts_spyder/audio/libasound.so:/system/lib/libasound.so \
-    device/motorola/umts_spyder/audio/libaudio_ext.so:/system/lib/libaudio_ext.so
+    $(DEVICE_FOLDER)/audio/alsa.omap4.so:/system/lib/hw/alsa.omap4.so \
+    $(DEVICE_FOLDER)/audio/audio.a2dp.default.so:/system/lib/hw/audio.a2dp.default.so \
+    $(DEVICE_FOLDER)/audio/audio.primary.omap4.so:/system/lib/hw/audio.primary.omap4.so \
+    $(DEVICE_FOLDER)/audio/audio_policy.omap4.so:/system/lib/hw/audio_policy.omap4.so \
+    $(DEVICE_FOLDER)/audio/libasound.so:/system/lib/libasound.so \
+    $(DEVICE_FOLDER)/audio/libaudio_ext.so:/system/lib/libaudio_ext.so
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
@@ -46,7 +48,7 @@ PRODUCT_PACKAGES += \
     Stk \
     libaudiomodemgeneric \
     rild \
-    radiooptions \
+    radiooptions
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -93,27 +95,26 @@ PRODUCT_PACKAGES += \
 # WirelessTether
 PRODUCT_PACKAGES += wifi_tether_v3_2-beta1
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_spyder/prebuilt/lib/libwtnativetask.so:system/lib/libwtnativetask.so \
-
+    $(DEVICE_FOLDER)/prebuilt/lib/libwtnativetask.so:system/lib/libwtnativetask.so \
 
 # Rootfs files
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_spyder/root/default.prop:/root/default.prop \
-    device/motorola/umts_spyder/root/init.rc:/root/init.rc \
-    device/motorola/umts_spyder/root/init.mapphone_cdma.rc:/root/init.mapphone_cdma.rc \
-    device/motorola/umts_spyder/root/init.mapphone_umts.rc:/root/init.mapphone_umts.rc \
-    device/motorola/umts_spyder/root/ueventd.rc:/root/ueventd.rc \
-    device/motorola/umts_spyder/root/ueventd.mapphone_cdma.rc:/root/ueventd.mapphone_cdma.rc \
-    device/motorola/umts_spyder/root/ueventd.mapphone_umts.rc:/root/ueventd.mapphone_umts.rc \
+    $(DEVICE_FOLDER)/root/default.prop:/root/default.prop \
+    $(DEVICE_FOLDER)/root/init.rc:/root/init.rc \
+    $(DEVICE_FOLDER)/root/init.mapphone_cdma.rc:/root/init.mapphone_cdma.rc \
+    $(DEVICE_FOLDER)/root/init.mapphone_umts.rc:/root/init.mapphone_umts.rc \
+    $(DEVICE_FOLDER)/root/ueventd.rc:/root/ueventd.rc \
+    $(DEVICE_FOLDER)/root/ueventd.mapphone_cdma.rc:/root/ueventd.mapphone_cdma.rc \
+    $(DEVICE_FOLDER)/root/ueventd.mapphone_umts.rc:/root/ueventd.mapphone_umts.rc \
 
 # Kexec files
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_spyder/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
-    device/motorola/umts_spyder/kexec/atags:system/etc/kexec/atags \
-    device/motorola/umts_spyder/kexec/devtree:system/etc/kexec/devtree \
-    device/motorola/umts_spyder/kexec/kexec:system/etc/kexec/kexec \
-    device/motorola/umts_spyder/kexec/kexec.ko:system/etc/kexec/kexec.ko \
-    device/motorola/umts_spyder/kexec/uart.ko:system/etc/kexec/uart.ko \
+    $(DEVICE_FOLDER)/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
+    $(DEVICE_FOLDER)/kexec/atags:system/etc/kexec/atags \
+    $(DEVICE_FOLDER)/kexec/devtree:system/etc/kexec/devtree \
+    $(DEVICE_FOLDER)/kexec/kexec:system/etc/kexec/kexec \
+    $(DEVICE_FOLDER)/kexec/kexec.ko:system/etc/kexec/kexec.ko \
+    $(DEVICE_FOLDER)/kexec/uart.ko:system/etc/kexec/uart.ko \
     out/target/product/umts_spyder/ramdisk.img:system/etc/kexec/ramdisk.img \
     out/target/product/umts_spyder/kernel:system/etc/kexec/kernel \
 
@@ -139,28 +140,14 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilts
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_spyder/prebuilt/bin/battd:system/bin/battd \
-    device/motorola/umts_spyder/prebuilt/bin/mount_ext3.sh:system/bin/mount_ext3.sh \
-    device/motorola/umts_spyder/prebuilt/bin/strace:system/bin/strace \
-    device/motorola/umts_spyder/prebuilt/etc/gps.conf:system/etc/gps.conf \
-    device/motorola/umts_spyder/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/motorola/umts_spyder/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/motorola/umts_spyder/prebuilt/etc/TICameraCameraProperties.xml:system/etc/TICameraCameraProperties.xml \
-    device/motorola/spyder/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
-    device/motorola/umts_spyder/prebuilt/usr/idc/evfwd.idc:system/usr/idc/evfwd.idc \
-    device/motorola/umts_spyder/prebuilt/usr/idc/Motorola_Mobility_Motorola_HD_Dock.idc:system/usr/idc/Motorola_Mobility_Motorola_HD_Dock.idc \
-    device/motorola/umts_spyder/prebuilt/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
-    device/motorola/umts_spyder/prebuilt/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-    device/motorola/umts_spyder/prebuilt/usr/keychars/evfwd.kcm:system/usr/keychars/evfwd.kcm \
-    device/motorola/umts_spyder/prebuilt/usr/keychars/omap4-keypad.kcm:system/usr/keychars/omap4-keypad.kcm \
-    device/motorola/umts_spyder/prebuilt/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-    device/motorola/umts_spyder/prebuilt/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
-    device/motorola/umts_spyder/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/motorola/umts_spyder/prebuilt/usr/keylayout/cpcap-key.kl:system/usr/keylayout/cpcap-key.kl \
-    device/motorola/umts_spyder/prebuilt/usr/keylayout/cy8c201xx.kl:system/usr/keylayout/cy8c201xx.kl \
-    device/motorola/umts_spyder/prebuilt/usr/keylayout/evfwd.kl:system/usr/keylayout/evfwd.kl \
-    device/motorola/umts_spyder/prebuilt/usr/keylayout/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
-    device/motorola/umts_spyder/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    $(DEVICE_FOLDER)/prebuilt/bin/battd:system/bin/battd \
+    $(DEVICE_FOLDER)/prebuilt/bin/mount_ext3.sh:system/bin/mount_ext3.sh \
+    $(DEVICE_FOLDER)/prebuilt/bin/strace:system/bin/strace \
+    $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
+    $(DEVICE_FOLDER)/prebuilt/etc/gps.conf:system/etc/gps.conf \
+    $(DEVICE_FOLDER)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    $(DEVICE_FOLDER)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+    $(DEVICE_FOLDER)/prebuilt/etc/TICameraCameraProperties.xml:system/etc/TICameraCameraProperties.xml \
 
 
 # we have enough storage space to hold precise GC data
@@ -169,16 +156,18 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # still need to set english for audio init
 PRODUCT_LOCALES += en_US
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := $(DEVICE_FOLDER)/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
 # stuff specific to ti OMAP4 hardware
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
-$(call inherit-product, device/ti/proprietary-open/wl12xx/wlan/wl12xx-wlan-fw-products.mk)
 $(call inherit-product-if-exists, vendor/motorola/common/proprietary/imgtec/sgx-imgtec-bins.mk)
-
 $(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor.mk)
-
-
-$(call inherit-product, build/target/product/full_base_telephony.mk)
-
-PRODUCT_NAME := full_umts_spyder
-PRODUCT_DEVICE := umts_spyder
+$(call inherit-product-if-exists, device/ti/proprietary-open/wl12xx/wlan/wl12xx-wlan-fw-products.mk)
