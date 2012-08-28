@@ -86,16 +86,10 @@ PRODUCT_PACKAGES += \
     DockAudio \
 
 PRODUCT_PACKAGES += \
-    librs_jni \
     com.android.future.usb.accessory \
     FileManager \
     MusicFX \
     Apollo \
-
-# WirelessTether
-PRODUCT_PACKAGES += wifi_tether_v3_2-beta1
-PRODUCT_COPY_FILES += \
-    $(DEVICE_FOLDER)/prebuilt/lib/libwtnativetask.so:system/lib/libwtnativetask.so \
 
 # Rootfs files
 PRODUCT_COPY_FILES += \

@@ -29,7 +29,7 @@ BOARD_PAGE_SIZE := 0x4096
 
 # Kernel Build
 TARGET_KERNEL_SOURCE := kernel/motorola/mapphone
-TARGET_KERNEL_CONFIG := hashcode_1024_defconfig
+TARGET_KERNEL_CONFIG := mapphone_umts_spyder_defconfig
 
 WLAN_MODULES:
 	make clean -C hardware/ti/wlan/mac80211/compat_wl12xx
@@ -132,7 +132,7 @@ endif
 TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/motorola/umts_spyder/releasetools/umts_spyder_ota_from_target_files
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := device/motorola/umts_spyder/releasetools/umts_spyder_img_from_target_files
-TARGET_CUSTOM_RELEASETOOL := ./device/motorola/umts_spyder/releasetools/squisher
+TARGET_CUSTOM_RELEASETOOL := ./vendor/motorola/common/tools/squisher
 
 
 # Misc.
