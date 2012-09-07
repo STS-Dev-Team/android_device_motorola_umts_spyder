@@ -24,7 +24,7 @@ PRODUCT_PACKAGES := \
 PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/audio/alsa.omap4.so:/system/lib/hw/alsa.omap4.so \
     $(DEVICE_FOLDER)/audio/audio.a2dp.default.so:/system/lib/hw/audio.a2dp.default.so \
-    $(DEVICE_FOLDER)/audio/audio.primary.omap4.so:/system/lib/hw/audio.primary.omap4.so \
+    $(DEVICE_FOLDER)/audio/audio.primary.omap4.so:/system/lib/hw/audio.primary.spyder.so \
     $(DEVICE_FOLDER)/audio/audio_policy.omap4.so:/system/lib/hw/audio_policy.omap4.so \
     $(DEVICE_FOLDER)/audio/libasound.so:/system/lib/libasound.so \
     $(DEVICE_FOLDER)/audio/libaudio_ext.so:/system/lib/libaudio_ext.so
@@ -32,11 +32,11 @@ PRODUCT_COPY_FILES += \
 # Hardware HALs
 PRODUCT_PACKAGES += \
     camera.omap4 \
-    libinvensense_mpl \
+    libinvensense_mpl
 
 PRODUCT_PACKAGES += \
     libaudioutils \
-    libaudiohw_legacy \
+    libaudiohw_legacy
 
 # BlueZ test tools
 PRODUCT_PACKAGES += \
@@ -89,7 +89,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     FileManager \
     MusicFX \
-    Apollo \
+    Apollo
 
 # Rootfs files
 PRODUCT_COPY_FILES += \
@@ -110,7 +110,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/kexec/kexec.ko:system/etc/kexec/kexec.ko \
     $(DEVICE_FOLDER)/kexec/uart.ko:system/etc/kexec/uart.ko \
     out/target/product/umts_spyder/ramdisk.img:system/etc/kexec/ramdisk.img \
-    out/target/product/umts_spyder/kernel:system/etc/kexec/kernel \
+    out/target/product/umts_spyder/kernel:system/etc/kexec/kernel
 
 # Permissions files
 PRODUCT_COPY_FILES += \
@@ -129,7 +129,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.direct.xml:/system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/base/data/etc/handheld_core_hardware.xml:/system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
 
 # Prebuilts
@@ -141,7 +141,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/prebuilt/etc/gps.conf:system/etc/gps.conf \
     $(DEVICE_FOLDER)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     $(DEVICE_FOLDER)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    $(DEVICE_FOLDER)/prebuilt/etc/TICameraCameraProperties.xml:system/etc/TICameraCameraProperties.xml \
+    $(DEVICE_FOLDER)/prebuilt/etc/TICameraCameraProperties.xml:system/etc/TICameraCameraProperties.xml
 
 
 # we have enough storage space to hold precise GC data

@@ -69,7 +69,7 @@ persist.mot.usb.mediasync = 1
 # persist.usb.android_config = 1
 
 # System property for Security Middleware Component
-ro.service.start.smc=1
+ro.service.start.smc=0
 
 
 #Proximity sensor debounce time
