@@ -34,12 +34,20 @@ PRODUCT_COPY_FILES += \
 
 # Kexec files and ti ducati or rootfs files
 ifeq ($(BOARD_USES_KEXEC),true)
+ifeq ($(TARGET_PRODUCT),full_umts_spyder)
+PRODUCT_COPY_FILES += device/motorola/common/prebuilt/etc/rootfs/init:root/init
+endif
 PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/kexec/devtree:system/etc/kexec/devtree \
     $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
     out/target/product/umts_spyder/ramdisk.img:system/etc/kexec/ramdisk.img \
     out/target/product/umts_spyder/kernel:system/etc/kexec/kernel
 else
+ifeq ($(TARGET_PRODUCT),full_umts_spyder)
+PRODUCT_COPY_FILES += device/motorola/common/prebuilt/etc/rootfs/init:system/etc/rootfs/init
+else
+PRODUCT_COPY_FILES += out/target/product/umts_spyder/root/init:system/etc/rootfs/init
+endif
 PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/root/default.prop:/system/etc/rootfs/default.prop \
     system/core/rootdir/init.rc:/system/etc/rootfs/init.rc \
@@ -48,7 +56,6 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/root/ueventd.rc:/system/etc/rootfs/ueventd.rc \
     $(DEVICE_FOLDER)/root/ueventd.mapphone_cdma.rc:/system/etc/rootfs/ueventd.mapphone_cdma.rc \
     $(DEVICE_FOLDER)/root/ueventd.mapphone_umts.rc:/system/etc/rootfs/ueventd.mapphone_umts.rc \
-    out/target/product/umts_spyder/root/init:system/etc/rootfs/init \
     out/target/product/umts_spyder/root/sbin/adbd:system/etc/rootfs/sbin/adbd
 endif
 
@@ -63,11 +70,6 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/prebuilt/etc/TICameraCameraProperties.xml:system/etc/TICameraCameraProperties.xml
 
 #    $(DEVICE_FOLDER)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml 
-
-# SU binary for AOSP builds
-ifeq ($(TARGET_PRODUCT),full_umts_spyder)
-PRODUCT_COPY_FILES += vendor/motorola/common/prebuilt/bin/su:system/xbin/su
-endif
 
 # copy all kernel modules under the "modules" directory to system/lib/modules
 ifneq ($(BOARD_USES_KEXEC),true)
