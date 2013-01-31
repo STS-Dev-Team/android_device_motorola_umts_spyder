@@ -34,20 +34,12 @@ PRODUCT_COPY_FILES += \
 
 # Kexec files and ti ducati or rootfs files
 ifeq ($(BOARD_USES_KEXEC),true)
-ifeq ($(TARGET_PRODUCT),full_umts_spyder)
-PRODUCT_COPY_FILES += device/motorola/common/prebuilt/etc/rootfs/init:root/init
-endif
 PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/kexec/devtree:system/etc/kexec/devtree \
     $(OUT)/ramdisk.img:system/etc/kexec/ramdisk.img \
     $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
     $(OUT)/kernel:system/etc/kexec/kernel
 else
-ifeq ($(TARGET_PRODUCT),full_umts_spyder)
-PRODUCT_COPY_FILES += device/motorola/common/prebuilt/etc/rootfs/init:system/etc/rootfs/init
-else
-PRODUCT_COPY_FILES += $(OUT)/root/init:system/etc/rootfs/init
-endif
 PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/root/default.prop:/system/etc/rootfs/default.prop \
     system/core/rootdir/init.rc:/system/etc/rootfs/init.rc \
