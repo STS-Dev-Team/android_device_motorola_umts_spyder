@@ -1,5 +1,9 @@
 # inherit from common
+ifeq ($(BOARD_USES_KEXEC),true)
+-include device/motorola/omap4-kexec-common/BoardConfigCommon.mk
+else
 -include device/motorola/omap4-common/BoardConfigCommon.mk
+endif
 
 # inherit from the proprietary version
 -include vendor/motorola/umts_spyder/BoardConfigVendor.mk
@@ -19,7 +23,7 @@ BOARD_PAGE_SIZE := 0x4096
 # Kernel Build
 ifeq ($(BOARD_USES_KEXEC),true)
 TARGET_KERNEL_SOURCE := kernel/motorola/mapphone
-TARGET_KERNEL_CONFIG := mapphone_spyder_jb_defconfig
+TARGET_KERNEL_CONFIG := mapphone_spyder_defconfig
 else
 TARGET_KERNEL_SOURCE := kernel/motorola/omap4_xt912
 TARGET_KERNEL_CONFIG := mapphone_defconfig

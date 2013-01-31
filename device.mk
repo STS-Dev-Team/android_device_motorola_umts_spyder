@@ -1,7 +1,11 @@
 #
 # This is the product configuration for a full umts_spyder
 #
+ifeq ($(BOARD_USES_KEXEC),true)
+$(call inherit-product, device/motorola/omap4-kexec-common/common.mk)
+else
 $(call inherit-product, device/motorola/omap4-common/common.mk)
+endif
 
 DEVICE_FOLDER := device/motorola/umts_spyder
 
