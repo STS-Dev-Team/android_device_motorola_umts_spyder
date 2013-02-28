@@ -37,11 +37,11 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/root/init.usb.rc:/root/init.usb.rc
 
 # Kexec files and ti ducati or rootfs files
+#    $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
 ifeq ($(BOARD_USES_KEXEC),true)
 PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/kexec/devtree:system/etc/kexec/devtree \
     $(OUT)/ramdisk.img:system/etc/kexec/ramdisk.img \
-    $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
     $(OUT)/kernel:system/etc/kexec/kernel
 else
 PRODUCT_COPY_FILES += \
@@ -76,5 +76,6 @@ $(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor
 ifneq ($(BOARD_USES_KEXEC),true)
 $(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor-pvr.mk)
 $(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor-stock-camera.mk)
-$(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor-stock-ducati.mk)
 endif
+$(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor-stock-ducati.mk)
+
