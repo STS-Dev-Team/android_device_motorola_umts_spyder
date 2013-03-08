@@ -36,25 +36,14 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/root/ueventd.mapphone.rc:/root/ueventd.mapphone_umts.rc \
     $(DEVICE_FOLDER)/root/init.usb.rc:/root/init.usb.rc
 
+#    $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
 # Kexec files and ti ducati or rootfs files
-ifeq ($(BOARD_USES_KEXEC),true)
+#ifeq ($(BOARD_USES_KEXEC),true)
 PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/kexec/devtree:system/etc/kexec/devtree \
     $(OUT)/ramdisk.img:system/etc/kexec/ramdisk.img \
-    $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
     $(OUT)/kernel:system/etc/kexec/kernel
-else
-PRODUCT_COPY_FILES += \
-    $(DEVICE_FOLDER)/root/default.prop:/system/etc/rootfs/default.prop \
-    system/core/rootdir/init.rc:/system/etc/rootfs/init.rc \
-    system/core/rootdir/ueventd.rc:/system/etc/rootfs/ueventd.rc \
-    $(DEVICE_FOLDER)/root/init.usb.rc:/system/etc/rootfs/init.usb.rc \
-    $(DEVICE_FOLDER)/root/init.mapphone.rc:/system/etc/rootfs/init.mapphone_cdma.rc \
-    $(DEVICE_FOLDER)/root/init.mapphone.rc:/system/etc/rootfs/init.mapphone_umts.rc \
-    $(DEVICE_FOLDER)/root/ueventd.mapphone.rc:/system/etc/rootfs/ueventd.mapphone_cdma.rc \
-    $(DEVICE_FOLDER)/root/ueventd.mapphone.rc:/system/etc/rootfs/ueventd.mapphone_umts.rc \
-    $(OUT)/root/sbin/adbd:system/etc/rootfs/sbin/adbd
-endif
+#endif
 
 # Prebuilts
 PRODUCT_COPY_FILES += \
@@ -64,12 +53,12 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_FOLDER)/prebuilt/etc/vold.fstab:system/etc/vold.fstab
 
 # copy all kernel modules under the "modules" directory to system/lib/modules
-ifneq ($(BOARD_USES_KEXEC),true)
-PRODUCT_COPY_FILES += $(shell \
-    find device/motorola/umts_spyder/modules -name '*.ko' \
-    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-    | tr '\n' ' ')
-endif
+#ifneq ($(BOARD_USES_KEXEC),true)
+#PRODUCT_COPY_FILES += $(shell \
+#    find device/motorola/umts_spyder/modules -name '*.ko' \
+#    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
+#    | tr '\n' ' ')
+#endif
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product-if-exists, vendor/motorola/umts_spyder/umts_spyder-vendor.mk)
