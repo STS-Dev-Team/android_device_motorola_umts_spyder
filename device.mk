@@ -27,16 +27,6 @@ endif
 PRODUCT_PACKAGES += \
     Stk
 
-# Root files
-PRODUCT_COPY_FILES += \
-    $(DEVICE_FOLDER)/root/default.prop:/root/default.prop \
-    $(DEVICE_FOLDER)/root/init.mapphone.rc:/root/init.mapphone_cdma.rc \
-    $(DEVICE_FOLDER)/root/init.mapphone.rc:/root/init.mapphone_umts.rc \
-    $(DEVICE_FOLDER)/root/ueventd.mapphone.rc:/root/ueventd.mapphone_cdma.rc \
-    $(DEVICE_FOLDER)/root/ueventd.mapphone.rc:/root/ueventd.mapphone_umts.rc \
-    $(DEVICE_FOLDER)/root/init.usb.rc:/root/init.usb.rc
-
-#    $(DEVICE_FOLDER)/prebuilt/etc/firmware/ducati-m3.bin:system/etc/firmware/ducati-m3.bin \
 # Kexec files and ti ducati or rootfs files
 #ifeq ($(BOARD_USES_KEXEC),true)
 PRODUCT_COPY_FILES += \
